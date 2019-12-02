@@ -12,6 +12,8 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 source $HOME/.env
 
+export PATH="$PATH:$HOME/bin"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ -d $HOME/.pyenv ]; then

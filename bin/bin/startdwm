@@ -1,0 +1,5 @@
+while true; do
+    slstatus &
+    dwm >/dev/null 2>&1
+    killall slstatus
+done
