@@ -38,6 +38,8 @@ Plug 'justinmk/vim-sneak'
 Plug 'lambdalisue/vim-pyenv'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'lukaszb/vim-web-indent'
+Plug 'majutsushi/tagbar'
+Plug 'martinda/Jenkinsfile-vim-syntax'
 Plug 'pearofducks/ansible-vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'powerman/vim-plugin-AnsiEsc'
@@ -45,6 +47,7 @@ Plug 'python/black'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'stephpy/vim-yaml'
 Plug 'takac/vim-hardtime'
 Plug 'tbabej/taskwiki'
 Plug 'tpope/vim-fugitive'
@@ -58,7 +61,6 @@ Plug 'vim-scripts/confluencewiki.vim'
 Plug 'vim-scripts/todo-txt.vim'
 Plug 'vimwiki/vimwiki', { 'branch': 'dev'}
 Plug 'w0rp/ale'
-
 " Hard time always
 let g:hardtime_default_on = 1
 
@@ -110,7 +112,7 @@ nnoremap <leader>g :GFiles?<CR>
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
-let g:ale_linters = {'python': ['flake8', 'pyflakes'], 'ruby': ['rubocop', 'brakeman']}
+let g:ale_linters = {'python': ['flake8', 'pyflakes'], 'ruby': ['rubocop', 'brakeman'], 'yaml': ['cfn-lint']}
 let g:ale_fixers = {'python': ['isort', 'black'], '*': ['trim_whitespace', 'remove_trailing_lines']}
 let g:ale_python_isort_options = '--multi-line=3 --trailing-comma --wrap-length=100'
 let g:ale_python_flake8_options = '--max-line-length=100'
@@ -155,7 +157,7 @@ set ruler		" show the cursor position all the time
 set autoread		" auto read when file is changed from outside
 
 set undofile
-set undodir=$HOME/.vim/.undo
+set undodir=$HOME/.vim/undo
 set undolevels=1000
 
 
@@ -245,3 +247,8 @@ set tags="./.tags,~/.vimtags,./.git/tags"
 
 set textwidth=119
 set colorcolumn=+1
+
+"Misc
+set timeoutlen=1000
+
+hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
