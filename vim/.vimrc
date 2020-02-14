@@ -109,11 +109,25 @@ nnoremap <leader>a :Ag<CR>
 nnoremap <leader>g :GFiles?<CR>
 
 "ALE
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
+
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
-let g:ale_linters = {'python': ['flake8', 'pyflakes'], 'ruby': ['rubocop', 'brakeman'], 'yaml': ['cfn-lint']}
-let g:ale_fixers = {'python': ['isort', 'black'], '*': ['trim_whitespace', 'remove_trailing_lines']}
+let g:ale_linters = {
+\   'python': ['flake8', 'pyflakes'],
+\   'ruby': ['rubocop', 'brakeman'],
+\   'yaml': ['cfn-lint'],
+\   'javascript': ['eslint'],
+\}
+let g:ale_fixers = {
+\   '*': ['trim_whitespace', 'remove_trailing_lines'],
+\   'javascript': ['eslint'],
+\   'python': ['isort', 'black']
+\}
 let g:ale_python_isort_options = '--multi-line=3 --trailing-comma --wrap-length=100'
 let g:ale_python_flake8_options = '--max-line-length=100'
 nnoremap <leader>e :ALEFix<CR>
