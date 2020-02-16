@@ -266,3 +266,4 @@ set colorcolumn=+1
 set timeoutlen=1000
 
 hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2
