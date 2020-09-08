@@ -1,0 +1,8 @@
+super + c
+    ksnip -r -d 1
+
+super + w
+    $TERMINAL -e vim -c VimwikiIndex
+
+super + x
+    xscreensaver-command -activate
