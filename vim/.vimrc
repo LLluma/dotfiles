@@ -1,5 +1,4 @@
 filetype off
-
 " Autoinstall Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -44,12 +43,14 @@ Plug 'pearofducks/ansible-vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'python/black'
+Plug 'roxma/vim-tmux-clipboard'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'stephpy/vim-yaml'
 Plug 'takac/vim-hardtime'
 Plug 'tbabej/taskwiki'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
@@ -61,15 +62,16 @@ Plug 'vim-scripts/confluencewiki.vim'
 Plug 'vim-scripts/todo-txt.vim'
 Plug 'vimwiki/vimwiki', { 'branch': 'dev'}
 Plug 'w0rp/ale'
+
+" Initialize plugin system
+call plug#end()
+
 " Hard time always
 let g:hardtime_default_on = 1
 
 " Gutentag
 let g:gutentags_ctags_tagfile = '.git/tags'
 
-
-" Initialize plugin system
-call plug#end()
 
 filetype plugin indent on
 
@@ -126,10 +128,12 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   '*': ['trim_whitespace', 'remove_trailing_lines'],
 \   'javascript': ['eslint'],
+\   'c': ['clangtidy', 'clang-format'],
 \   'python': ['isort', 'black']
 \}
 let g:ale_python_isort_options = '--multi-line=3 --trailing-comma --wrap-length=100'
 let g:ale_python_flake8_options = '--max-line-length=100'
+let g:ale_c_clangformat_options = '--style=LLVM'
 nnoremap <leader>e :ALEFix<CR>
 
 " turn hybrid line numbers on
@@ -183,7 +187,11 @@ filetype plugin on    " Enable filetype-specific plugins
 " auto reload vimrc when editing it
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
+" Compile suckless program
 au! BufWritePost config.h !sudo make install
+
+" Reload sxhkd config
+au! BufWritePost sxhkdrc !killall sxhkd -10
 
 
 syntax on
@@ -267,3 +275,8 @@ set timeoutlen=1000
 
 hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+autocmd BufNewFile,BufRead *.py set keywordprg=pydoc
+
+let g:pydoc_open_cmd = 'vsplit'
+noremap Zz <c-w>_ \| <c-w>\|
+noremap Zo <c-w>=

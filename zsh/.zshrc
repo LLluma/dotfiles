@@ -1,6 +1,6 @@
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="muse"
+ZSH_THEME="bira"
 
 plugins=(
     git-hubflow
@@ -25,3 +25,5 @@ fi
 if [ -d $HOME/.cargo ]; then
     export PATH="$PATH:$HOME/.cargo/bin"
 fi
+
+export TERMINAL=${TERMINAL:=/usr/local/bin/st}
