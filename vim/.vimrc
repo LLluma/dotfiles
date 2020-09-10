@@ -34,6 +34,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-sneak'
+Plug 'kovetskiy/sxhkd-vim'
 Plug 'lambdalisue/vim-pyenv'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'lukaszb/vim-web-indent'
