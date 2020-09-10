@@ -161,8 +161,8 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
 
-set backupdir=./.backup,/tmp
-set directory=./.backup,/tmp
+set backupdir=~/.backup,/tmp
+set directory=~/.backup,/tmp
 
 set nowrap
 set number
@@ -175,8 +175,12 @@ set ruler		" show the cursor position all the time
 set autoread		" auto read when file is changed from outside
 
 set undofile
+set undolevels=5000
 set undodir=$HOME/.vim/undo
-set undolevels=1000
+if !isdirectory(&undodir)
+    call mkdir(&undodir)
+endif
+
 
 
 filetype on           " Enable filetype detection
